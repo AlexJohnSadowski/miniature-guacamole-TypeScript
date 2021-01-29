@@ -16,7 +16,7 @@ const App = () => {
           <Route path="/blogs/:id">
             <BlogDetails/>
           </Route>
-          <Route path="/blogs/create">
+          <Route exact path="/create">
             <Create />
           </Route>
         </Switch>

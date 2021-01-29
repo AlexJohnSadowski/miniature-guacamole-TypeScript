@@ -2,7 +2,7 @@
  
  const useFetch = (url: RequestInfo) => {
     
-     const [data, setData] = useState<string>()
+     const [data, setData] = useState<any>()
      const [error, setError] = useState<string>()
      const [isLoading, SetLoading] = useState<boolean>(true)
 
