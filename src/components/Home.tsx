@@ -4,8 +4,16 @@ import useFetch from "../hooks/useFetch";
 import BlogList from "./BlogList";
 import Create from "./Create";
 
+export type BlogPostType = {
+  title: string
+  author: string
+  body: string
+  id: string
+}
+
+
 const Home = () => {
-  const { data: blogs, isLoading } = useFetch("http://localhost:3004/blogs");
+  const { data: blogs, isLoading } = useFetch<BlogPostType[]>("http://localhost:3004/blogs");
   return (
     <div>
       {isLoading && <div>Loading...</div>}

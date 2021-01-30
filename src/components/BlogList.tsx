@@ -1,10 +1,22 @@
 import React from "react";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
-const BlogList = ({ blogs }: any) => {
+export type BlogPostType = {
+  title: string
+  author: string
+  body: string
+  id: string
+}
+
+type PropsType = {
+  blogs: BlogPostType[]
+}
+
+const BlogList = ({ blogs }: PropsType) => {
+  console.log(blogs);
   return (
     <div>
-      {blogs.map((blog: any) => (
+      {blogs.map((blog) => (
         <div key={blog.id}>
           <Link to={`/blogs/${blog.id}`}>
             <h1>{blog.title}</h1>

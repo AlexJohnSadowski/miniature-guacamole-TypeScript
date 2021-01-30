@@ -1,17 +1,27 @@
 import { useHistory, useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
+import { BlogPostType } from './BlogList'
+type PostPageQueryType = {
+  id: string
+}
+
+
 
 const BlogDetails = () => {
-  const { id } : any = useParams();
-  const { data: blog, error, isLoading } = useFetch('http://localhost:3004/blogs/' + id);
+  const { id } = useParams<PostPageQueryType>();
+  const { data: blog, error, isLoading } = useFetch<BlogPostType>('http://localhost:3004/blogs/' + id);
   const history = useHistory();
 
   const handleClick = () => {
-    fetch('http://localhost:3004/blogs/' + blog.id, {
+    fetch('http://localhost:3004/blogs/' + blog?.id, {
       method: 'DELETE'
     }).then(() => {
       history.push('/');
     }) 
+  }
+
+  if(error){
+    return <div>{error}</div>
   }
 
   return (
@@ -21,7 +31,7 @@ const BlogDetails = () => {
       { blog && (
         <article>
           <h2>{ blog.title }</h2>
-          <p>Written by { blog.author }</p>
+          <p>Written by {blog.author}</p>
           <div>{ blog.body }</div>
           <button onClick={handleClick}>delete</button>
         </article>

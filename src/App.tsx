@@ -5,9 +5,9 @@ import Home from './components/Home';
 import BlogDetails from './components/BlogDetails';
 import Create from './components/Create';
 
+
 const App = () => {
   return (
-    <div>
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
@@ -21,7 +21,6 @@ const App = () => {
           </Route>
         </Switch>
       </BrowserRouter>
-    </div>
   )
 }
 
